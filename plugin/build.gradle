@@ -1,0 +1,57 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7.1'
+  }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'nexus'
+apply plugin: 'maven'
+
+dependencies {
+  compile gradleApi()
+  compile localGroovy()
+  compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+  compile 'org.apache.httpcomponents:httpmime:4.3.5'
+  compile 'com.android.tools.build:gradle:0.12.2'
+  testCompile 'junit:junit:4.11'
+  testCompile 'org.spockframework:spock-core:0.7-groovy-1.8'
+  testCompile 'com.squareup.okhttp:mockwebserver:2.0.0'
+}
+
+group = GROUP
+archivesBaseName = 'bugsense-plugin'
+version = '1.0-SNAPSHOT'
+
+modifyPom {
+  project {
+    name "Bugsense Gradle Plugin"
+    description POM_DESCRIPTION
+    url POM_URL
+
+    scm {
+      url POM_SCM_URL
+      connection POM_SCM_CONNECTION
+      developerConnection POM_SCM_DEV_CONNECTION
+    }
+
+    licenses {
+      license {
+        name POM_LICENCE_NAME
+        url POM_LICENCE_URL
+        distribution POM_LICENCE_DIST
+      }
+    }
+
+    developers {
+      developer {
+        id POM_DEVELOPER_ID
+        name POM_DEVELOPER_NAME
+      }
+    }
+  }
+}

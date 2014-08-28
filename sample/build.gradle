@@ -1,0 +1,43 @@
+buildscript {
+  repositories {
+    jcenter()
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:0.12.2'
+    classpath 'io.github.rciovati.tools:bugsense-plugin:1.0-SNAPSHOT'
+  }
+}
+
+apply plugin: 'android'
+apply plugin: 'bugsense'
+
+android {
+  compileSdkVersion 20
+  buildToolsVersion '20.0.0'
+
+  defaultConfig {
+    versionName "1.0.0"
+  }
+
+  buildTypes {
+    release {
+      runProguard true
+      proguardFile getDefaultProguardFile('proguard-android.txt')
+    }
+  }
+}
+
+android.applicationVariants.all { variant ->
+  if (variant.buildType.runProguard) {
+    def variantName = variant.name
+    project.tasks.create(name: "uploadProguardMapping${variantName.capitalize()}",
+            type: io.github.rciovati.bugsense.UploadMappingTask) {
+      apiKey = 'api-key'
+      authToken = 'auth-token'
+      appVersion = project.android.defaultConfig.versionName as String
+      mappingFile = new File(buildDir.getPath(), "/outputs/proguard/$variantName/mapping.txt")
+    }
+  }
+}

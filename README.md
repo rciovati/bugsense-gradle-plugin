@@ -1,4 +1,4 @@
-# BugSense Gradle Plugin
+# BugSense Gradle Plugin [![Build Status](https://travis-ci.org/rciovati/Bugsense-Gradle-Plugin.svg?branch=master)](https://travis-ci.org/rciovati/Bugsense-Gradle-Plugin)
 
 This plugin allows you to upload your Proguard mapping files to BugSense as part of the build process.
 

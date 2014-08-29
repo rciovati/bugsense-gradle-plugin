@@ -1,12 +1,11 @@
 buildscript {
   repositories {
     jcenter()
-    mavenLocal()
   }
 
   dependencies {
     classpath 'com.android.tools.build:gradle:0.12.2'
-    classpath 'io.github.rciovati.tools:bugsense-plugin:1.0-SNAPSHOT'
+    classpath 'io.github.rciovati.tools:bugsense-plugin:1.0.0'
   }
 }
 

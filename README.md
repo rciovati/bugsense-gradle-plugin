@@ -12,7 +12,7 @@ buildscript {
   }
 
   dependencies {
-    classpath 'io.github.rciovati.tools:bugsense-plugin:1.0-SNAPSHOT'
+    classpath 'io.github.rciovati.tools:bugsense-plugin:1.0.0'
   }
 }
 

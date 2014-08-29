@@ -1,2 +1,5 @@
-include ':plugin', ':sample'
-//include ':plugin'
+include ':plugin'
+
+if (!System.getenv()['TRAVIS']) { 
+    include ':sample'
+} 
